@@ -1,0 +1,7 @@
+{
+  "name": "mangaloide-frontend",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
