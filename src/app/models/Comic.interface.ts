@@ -1,4 +1,5 @@
 import { Chapter } from './Chapter.interface';
+
 export interface Comic {
   id: number;
   name: string;
