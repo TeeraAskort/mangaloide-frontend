@@ -8,6 +8,9 @@ import { User } from './../../models/User.interface';
 })
 export class RestService {
   private url = 'http://localhost:8080/api/v1/';
+  private loginHeaders: HttpHeaders = new HttpHeaders({
+    authorization: 'Basic ' + localStorage.getItem('user'),
+  });
 
   constructor(private http: HttpClient) {}
 
@@ -32,12 +35,8 @@ export class RestService {
   }
 
   public fetchPlayerData(): Observable<User> {
-    const loginHeaders: HttpHeaders = new HttpHeaders({
-      authorization: 'Basic ' + localStorage.getItem('user'),
-    });
-
     return this.http.get<User>(this.url + 'user/login', {
-      headers: loginHeaders,
+      headers: this.loginHeaders,
     });
   }
 
@@ -45,12 +44,8 @@ export class RestService {
     const formData: FormData = new FormData();
     formData.append('file', image, image.name);
 
-    const loginHeaders: HttpHeaders = new HttpHeaders({
-      authorization: 'Basic ' + localStorage.getItem('user'),
-    });
-
     return this.http.post<User>(this.url + 'user/uploadImage', formData, {
-      headers: loginHeaders,
+      headers: this.loginHeaders,
     });
   }
 
@@ -59,10 +54,6 @@ export class RestService {
     newPass: string,
     newPassRepeat: string
   ): Observable<User> {
-    const loginHeaders: HttpHeaders = new HttpHeaders({
-      authorization: 'Basic ' + localStorage.getItem('user'),
-    });
-
     const body = {
       oldPass,
       newPass,
@@ -70,7 +61,7 @@ export class RestService {
     };
 
     return this.http.post<User>(this.url + 'user/changePassword', body, {
-      headers: loginHeaders,
+      headers: this.loginHeaders,
     });
   }
 }

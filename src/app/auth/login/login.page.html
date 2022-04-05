@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row class="ion-justify-content-around ion-margin-top">
+    <ion-col size="12" size-md="6" size-lg="4">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title class="ion-text-center">
+            Login
+          </ion-card-title>
+          <ion-card-subtitle *ngIf="error" color="danger">
+            {{ error }}
+          </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <form [formGroup]="loginForm" (ngSubmit)="register()">
+            <ion-item>
+              <ion-label position="floating">Username</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <div class="ion-margin-top" *ngIf="loginForm.controls.username.invalid">
+              <p class="error" *ngIf="loginForm.controls.username.hasError('required')">
+                You have to enter your
+                username.</p>
+            </div>
+            <ion-item>
+              <ion-label position="floating">Password</ion-label>
+              <ion-input type="password"></ion-input>
+            </ion-item>
+            <div class="ion-margin-top" *ngIf="loginForm.controls.password.invalid">
+              <p class="error" *ngIf="loginForm.controls.password.hasError('required')">
+                You have to enter your password.
+              </p>
+            </div>
+            <ion-button expand="full" class="ion-margin-top">
+              <ion-icon slot="start" name="send"></ion-icon>
+              Send
+            </ion-button>
+          </form>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>
