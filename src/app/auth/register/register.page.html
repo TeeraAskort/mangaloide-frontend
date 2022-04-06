@@ -1,9 +1,63 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>register</ion-title>
+    <ion-title>Register</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-row class="ion-justify-content-around ion-margin-top">
+    <ion-col size="12" size-md="6" size-lg="4">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title class="ion-text-center">
+            Register
+          </ion-card-title>
+          <ion-card-subtitle *ngIf="error" color="danger">
+            {{ error }}
+          </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <form [formGroup]="registerForm" (ngSubmit)="register()">
+            <ion-item>
+              <ion-label position="floating">Username</ion-label>
+              <ion-input type="text" formControlName="username"></ion-input>
+            </ion-item>
+            <div class="ion-margin-top" *ngIf="registerForm.controls.username.invalid">
+              <p *ngIf="registerForm.controls.username.hasError('required')">
+                You have to enter your
+                username.</p>
+            </div>
+            <ion-item>
+              <ion-label position="floating">Password</ion-label>
+              <ion-input type="password" formControlName="password"></ion-input>
+            </ion-item>
+            <div class="ion-margin-top" *ngIf="registerForm.controls.password.invalid">
+              <p *ngIf="registerForm.controls.password.hasError('required')">
+                You have to enter your password.
+              </p>
+              <p *ngIf="registerForm.controls.password.hasError('minlength')">
+                Your password has to be at least 6 characters long.
+              </p>
+            </div>
+            <ion-item>
+              <ion-label position="floating">Password</ion-label>
+              <ion-input type="password" formControlName="passwordRepeat"></ion-input>
+            </ion-item>
+            <div class="ion-margin-top" *ngIf="registerForm.controls.passwordRepeat.invalid">
+              <p *ngIf="registerForm.controls.passwordRepeat.hasError('required')">
+                You have to enter your password.
+              </p>
+              <p *ngIf="registerForm.errors?.['passwordsDontMatch']">
+                Passwords do not match.
+              </p>
+            </div>
+            <ion-button expand="full" class="ion-margin-top">
+              <ion-icon slot="start" name="send"></ion-icon>
+              Send
+            </ion-button>
+          </form>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
 </ion-content>

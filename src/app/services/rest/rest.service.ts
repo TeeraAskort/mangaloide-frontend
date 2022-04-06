@@ -34,7 +34,7 @@ export class RestService {
     });
   }
 
-  public fetchPlayerData(): Observable<User> {
+  public fetchUserData(): Observable<User> {
     return this.http.get<User>(this.url + 'user/login', {
       headers: this.loginHeaders,
     });

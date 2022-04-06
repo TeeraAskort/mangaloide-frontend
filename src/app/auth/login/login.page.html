@@ -23,7 +23,7 @@
               <ion-input type="text"></ion-input>
             </ion-item>
             <div class="ion-margin-top" *ngIf="loginForm.controls.username.invalid">
-              <p class="error" *ngIf="loginForm.controls.username.hasError('required')">
+              <p *ngIf="loginForm.controls.username.hasError('required')">
                 You have to enter your
                 username.</p>
             </div>
@@ -32,7 +32,7 @@
               <ion-input type="password"></ion-input>
             </ion-item>
             <div class="ion-margin-top" *ngIf="loginForm.controls.password.invalid">
-              <p class="error" *ngIf="loginForm.controls.password.hasError('required')">
+              <p *ngIf="loginForm.controls.password.hasError('required')">
                 You have to enter your password.
               </p>
             </div>
