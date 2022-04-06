@@ -18,15 +18,25 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./auth/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () =>
+      import('./auth/login/login.module').then((m) => m.LoginPageModule),
   },
   {
     path: 'register',
-    loadChildren: () => import('./auth/register/register.module').then( m => m.RegisterPageModule)
+    loadChildren: () =>
+      import('./auth/register/register.module').then(
+        (m) => m.RegisterPageModule
+      ),
   },
   {
     path: 'logout',
-    loadChildren: () => import('./auth/logout/logout.module').then( m => m.LogoutPageModule)
+    loadChildren: () =>
+      import('./auth/logout/logout.module').then((m) => m.LogoutPageModule),
+  },
+  {
+    path: 'comic/:id',
+    loadChildren: () =>
+      import('./comic/comic.module').then((m) => m.ComicPageModule),
   },
 ];
 

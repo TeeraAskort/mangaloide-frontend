@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from './../../models/User.interface';
+import { SendPage } from 'src/app/models/SendPage.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RestService {
   private url = 'http://localhost:8080/api/v1/';
+
   private loginHeaders: HttpHeaders = new HttpHeaders({
     authorization: 'Basic ' + localStorage.getItem('user'),
   });
@@ -63,5 +65,9 @@ export class RestService {
     return this.http.post<User>(this.url + 'user/changePassword', body, {
       headers: this.loginHeaders,
     });
+  }
+
+  public getLatestComics(page: number): Observable<SendPage> {
+    return this.http.get<SendPage>(this.url + 'comic/getLatestComics/' + page);
   }
 }

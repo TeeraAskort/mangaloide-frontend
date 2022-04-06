@@ -4,20 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { HomePageRoutingModule } from './home-routing.module';
+import { ComicPageRoutingModule } from './comic-routing.module';
 
-import { HttpClientModule } from '@angular/common/http';
-
-import { HomePage } from './home.page';
+import { ComicPage } from './comic.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule,
-    HttpClientModule,
+    ComicPageRoutingModule
   ],
-  declarations: [HomePage],
+  declarations: [ComicPage]
 })
-export class HomePageModule {}
+export class ComicPageModule {}
