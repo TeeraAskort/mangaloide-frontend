@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from './../../models/User.interface';
 import { SendPage } from 'src/app/models/SendPage.interface';
+import { Comic } from 'src/app/models/Comic.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -69,5 +70,9 @@ export class RestService {
 
   public getLatestComics(page: number): Observable<SendPage> {
     return this.http.get<SendPage>(this.url + 'comic/getLatestComics/' + page);
+  }
+
+  public getComicById(id: number): Observable<Comic> {
+    return this.http.get<Comic>(this.url + '/comic/' + id + '/fetch');
   }
 }

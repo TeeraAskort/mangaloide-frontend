@@ -6,5 +6,6 @@ export interface Comic {
   author: string;
   finished: boolean;
   nsfw: boolean;
+  description: string;
   chapters: Chapter[];
 }

@@ -5,5 +5,28 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-row class="ion-justify-content-around ion-margin-top">
+    <ion-col *ngIf="comic" size="12" size-md="6" size-lg="4">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>
+            {{ comic.name }}
+          </ion-card-title>
+          <ion-card-subtitle>
+            Author: {{ comic.author }}
+          </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-item>
+            <ion-label>
+              NSFW
+            </ion-label>
+            <ion-checkbox color="danger" checked="{{ comic.nsfw }}"></ion-checkbox>
+          </ion-item>
+          <h2>Description</h2>
+          <p>{{ comic.description }}</p>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
 </ion-content>
